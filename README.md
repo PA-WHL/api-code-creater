@@ -14,7 +14,7 @@
 ## 基础用法
 步骤1：安装生成器
 ```
-npm i api-code-creater -save-dev
+npm i api-code-creater --save-dev
 ```
 步骤2：在项目根目录新建 `api.config.js`, 用以配置生成器的执行函数
 ```js
