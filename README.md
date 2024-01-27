@@ -65,6 +65,7 @@ generateService({
 
 ##### 1）公共函数文件头
 默认情况下，每一个函数声明文件的头部都存在语句`import request from '@/utils/request';`
+
 若要自定义所有函数声明文件的公共文件头，可通过`funFileHeads参数`设置：
 
 ```js
