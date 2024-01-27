@@ -57,7 +57,7 @@ generateService({
 ```
 ### 可选功能项：
 #### 1. 设置生成样式
-生成器默认基于内置的axios模板完成函数文件与类型文件中的内容生成，可以采用：
+生成器默认基于内置的axios模板完成函数声明文件与类型声明文件中的内容生成，可以采用：
 * 默认模式 - 选择基于axios封装请求的固定内容格式
 * 自定义模式 - 自由定义内容格式
 
@@ -112,6 +112,7 @@ generateService({
 |--------|--------------------------------------------------------------------------------------|---------------------------------------------------------|
 | 默认类型模式 | `缺省funTypeMode参数` 或<br/> `funTypeMode: "default"`                                    | 如：`getUser(id:number):Promise<CommonResultUser>{...}`   |
 | 泛型类型模式 | `funTypeMode: "generics"` 并<br/> `commonReturnTypes: ['CommonResult', 'CommonPage']` | 如：`getUser(id:number):Promise<CommonResult<User>>{...}` |
+
 注：此处泛型配置中的commonReturnTypes需按实际后端提供api文档来填写，这里是假设后端提供api中存在通用返回类型CommonResult与CommonPage，这样包含这两个字符串的所有类型都会自动据此分割成泛型！
 
 ##### 4）声明类型的作用域
