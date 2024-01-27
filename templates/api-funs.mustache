@@ -1,0 +1,89 @@
+{{! ================== 模块类型模式下的模板 ================== }}
+{{#typeScope.enableModule}}
+{{#funImportTypeList.length}}import type {
+    {{#funImportTypeList}}
+    {{&.}},
+    {{/funImportTypeList}}
+} from './typings';{{/funImportTypeList.length}}
+{{#funFileHeads}}
+{{&.}}
+{{/funFileHeads}}
+
+{{#funDataList}}
+/**
+* {{functionDescription}}
+{{#functionParamList}}
+* @param {{name}} {{description}}{{^description}}{{&type}}{{/description}}
+{{/functionParamList}}
+*/
+export function {{functionName}}({{#functionParamList}}{{name}}:{{&type}},{{/functionParamList}}):Promise<{{&functionReturnType}}> {
+    return request({
+        url: `{{& url }}`,
+        method: '{{ method }}',
+        {{#queryParams.length}}
+        params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
+        {{/queryParams.length}}
+        {{#bodyData.length}}
+        data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
+        {{/bodyData.length}}
+    })
+}
+
+{{/funDataList}}
+{{/typeScope.enableModule}}
+{{! ================== 命名空间类型模式下的模板 ================== }}
+{{#typeScope.enableNamespace}}
+{{#funFileHeads}}
+{{&.}}
+{{/funFileHeads}}
+
+{{#funDataList}}
+/**
+* {{functionDescription}}
+{{#functionParamList}}
+  * @param {{name}} {{description}}{{^description}}{{&type}}{{/description}}
+{{/functionParamList}}
+*/
+export function {{functionName}}({{#functionParamList}}{{name}}:{{^isRefType}}{{&type}}{{/isRefType}}{{#isRefType}}{{namespaceId}}.{{&type}}{{/isRefType}},{{/functionParamList}}):Promise<{{namespaceId}}.{{&functionReturnType}}> {
+    return request({
+        url: `{{& url }}`,
+        method: '{{ method }}',
+        {{#queryParams.length}}
+        params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
+        {{/queryParams.length}}
+        {{#bodyData.length}}
+        data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
+        {{/bodyData.length}}
+    })
+}
+
+{{/funDataList}}
+{{/typeScope.enableNamespace}}
+{{! ================== 全局类型模式下的模板 ================== }}
+{{#typeScope.enableGlobal}}
+{{#funFileHeads}}
+{{&.}}
+{{/funFileHeads}}
+
+{{#funDataList}}
+/**
+* {{functionDescription}}
+{{#functionParamList}}
+  * @param {{name}} {{description}}{{^description}}{{&type}}{{/description}}
+{{/functionParamList}}
+*/
+export function {{functionName}}({{#functionParamList}}{{name}}:{{&type}},{{/functionParamList}}):Promise<{{&functionReturnType}}> {
+    return request({
+        url: `{{& url }}`,
+        method: '{{ method }}',
+        {{#queryParams.length}}
+        params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
+        {{/queryParams.length}}
+        {{#bodyData.length}}
+        data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
+        {{/bodyData.length}}
+    })
+}
+
+{{/funDataList}}
+{{/typeScope.enableGlobal}}

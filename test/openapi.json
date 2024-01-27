@@ -1,0 +1,2138 @@
+{
+  "components": {
+    "schemas": {
+      "string": {
+        "format": "string",
+        "type": "string"
+      },
+      "CommonResultCommonPageResource_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/CommonPageResource_response"
+          }
+        }
+      },
+      "Resource_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "name": {
+            "format": "string",
+            "description": "资源名",
+            "type": "string",
+            "example": ""
+          },
+          "url": {
+            "format": "string",
+            "description": "资源URL",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "CommonResultUserLoginResult_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/UserLoginResult_response"
+          }
+        }
+      },
+      "UserLoginParam_request": {
+        "properties": {
+          "username": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "password": {
+            "format": "string",
+            "description": "密码",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "Role_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "name": {
+            "format": "string",
+            "description": "角色名",
+            "type": "string"
+          },
+          "description": {
+            "format": "string",
+            "description": "描述",
+            "type": "string"
+          }
+        }
+      },
+      "User_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "username": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string",
+            "example": ""
+          },
+          "password": {
+            "format": "string",
+            "description": "密码（加密后的密文）",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "CommonResultUser_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/User_response"
+          }
+        }
+      },
+      "UserRegisterParam_request": {
+        "properties": {
+          "username": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "password": {
+            "format": "string",
+            "description": "密码",
+            "type": "string"
+          },
+          "icon": {
+            "format": "string",
+            "description": "用户图标",
+            "type": "string"
+          },
+          "email": {
+            "format": "string",
+            "description": "邮箱",
+            "type": "string"
+          },
+          "nickname": {
+            "format": "string",
+            "description": "用户昵称\nValidate[max: 10; ]",
+            "type": "string"
+          },
+          "notes": {
+            "format": "string",
+            "description": "备注\nValidate[max: 100; ]",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "CommonPageUser_response": {
+        "properties": {
+          "pageNum": {
+            "format": "int32",
+            "description": "当前页码",
+            "type": "integer",
+            "example": "0"
+          },
+          "pageSize": {
+            "format": "int32",
+            "description": "每页数量",
+            "type": "integer",
+            "example": "0"
+          },
+          "totalPage": {
+            "format": "int32",
+            "description": "总页数",
+            "type": "integer",
+            "example": "0"
+          },
+          "total": {
+            "format": "int64",
+            "description": "总条数",
+            "type": "number",
+            "example": "0"
+          },
+          "list": {
+            "description": "分页数据",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User_response"
+            }
+          }
+        }
+      },
+      "CommonResultResource_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/Resource_response"
+          }
+        }
+      },
+      "CommonPageRole_response": {
+        "properties": {
+          "pageNum": {
+            "format": "int32",
+            "description": "当前页码",
+            "type": "integer",
+            "example": "0"
+          },
+          "pageSize": {
+            "format": "int32",
+            "description": "每页数量",
+            "type": "integer",
+            "example": "0"
+          },
+          "totalPage": {
+            "format": "int32",
+            "description": "总页数",
+            "type": "integer",
+            "example": "0"
+          },
+          "total": {
+            "format": "int64",
+            "description": "总条数",
+            "type": "number",
+            "example": "0"
+          },
+          "list": {
+            "description": "分页数据",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Role_response"
+            }
+          }
+        }
+      },
+      "UserLoginResult_response": {
+        "properties": {
+          "token": {
+            "format": "string",
+            "description": "后续访问时，需携带作为登录凭据的Token",
+            "type": "string",
+            "example": ""
+          },
+          "tokenHead": {
+            "format": "string",
+            "description": "后续访问时，需存在Authorization请求头且存放着tokenHead + token数据",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Role_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "name": {
+            "format": "string",
+            "description": "角色名",
+            "type": "string",
+            "example": ""
+          },
+          "description": {
+            "format": "string",
+            "description": "描述",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "UserUpdatePasswordParam_request": {
+        "properties": {
+          "username": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "oldPassword": {
+            "format": "string",
+            "description": "旧密码",
+            "type": "string"
+          },
+          "newPassword": {
+            "format": "string",
+            "description": "新密码",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "oldPassword",
+          "newPassword"
+        ]
+      },
+      "CommonResultListRole_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Role_response"
+            }
+          }
+        }
+      },
+      "CommonResultCommonPageRole_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/CommonPageRole_response"
+          }
+        }
+      },
+      "CommonResultUserInfoResult_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/UserInfoResult_response"
+          }
+        }
+      },
+      "CommonResultCommonPageUser_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/CommonPageUser_response"
+          }
+        }
+      },
+      "CommonPageResource_response": {
+        "properties": {
+          "pageNum": {
+            "format": "int32",
+            "description": "当前页码",
+            "type": "integer",
+            "example": "0"
+          },
+          "pageSize": {
+            "format": "int32",
+            "description": "每页数量",
+            "type": "integer",
+            "example": "0"
+          },
+          "totalPage": {
+            "format": "int32",
+            "description": "总页数",
+            "type": "integer",
+            "example": "0"
+          },
+          "total": {
+            "format": "int64",
+            "description": "总条数",
+            "type": "number",
+            "example": "0"
+          },
+          "list": {
+            "description": "分页数据",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Resource_response"
+            }
+          }
+        }
+      },
+      "CommonResultListResource_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Resource_response"
+            }
+          }
+        }
+      },
+      "UserInfoResult_response": {
+        "properties": {
+          "username": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string",
+            "example": ""
+          },
+          "icon": {
+            "format": "string",
+            "description": "用户图标",
+            "type": "string",
+            "example": ""
+          },
+          "menus": {
+            "format": "string",
+            "description": "用户登录后可显示的菜单列表",
+            "type": "string",
+            "example": ""
+          },
+          "roles": {
+            "description": "用户担任的所有角色名",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ","
+          }
+        }
+      },
+      "User_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "username": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "password": {
+            "format": "string",
+            "description": "密码（加密后的密文）",
+            "type": "string"
+          }
+        }
+      },
+      "Resource_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "name": {
+            "format": "string",
+            "description": "资源名",
+            "type": "string"
+          },
+          "url": {
+            "format": "string",
+            "description": "资源URL",
+            "type": "string"
+          }
+        }
+      },
+      "CommonResult_response": {
+        "properties": {
+          "code": {
+            "format": "int64",
+            "description": "状态码",
+            "type": "number",
+            "example": "0"
+          },
+          "message": {
+            "format": "string",
+            "description": "提示信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "数据封装(object)",
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "openapi": "3.0.3",
+  "paths": {
+    "/user/list": {
+      "get": {
+        "summary": "根据用户名或姓名分页获取用户列表",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultCommonPageUser_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"pageNum\": 0,\n    \"pageSize\": 0,\n    \"totalPage\": 0,\n    \"total\": 0,\n    \"list\": [\n      {\n        \"id\": 0,\n        \"username\": \"\",\n        \"password\": \"\"\n      }\n    ]\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-list-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "查询关键词",
+            "required": false,
+            "name": "keyword"
+          },
+          {
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "in": "query",
+            "description": "分页显示的总页数，缺省默认5",
+            "required": false,
+            "name": "pageSize"
+          },
+          {
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "in": "query",
+            "description": "分页显示的每页条目数，缺省默认1",
+            "required": false,
+            "name": "pageNum"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/listResources/{roleId}": {
+      "get": {
+        "summary": "获取角色相关资源",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultListResource_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": [\n    {\n      \"id\": 0,\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-listResources-{roleId}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "角色id",
+            "required": true,
+            "name": "roleId"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/resource/create": {
+      "post": {
+        "summary": "添加后台资源",
+        "deprecated": false,
+        "tags": [
+          "资源管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"name\": \"\",\n  \"url\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "resource-create-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/resource/update/{id}": {
+      "post": {
+        "summary": "修改后台资源",
+        "deprecated": false,
+        "tags": [
+          "资源管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"name\": \"\",\n  \"url\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "resource-update-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "      资源id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/info": {
+      "get": {
+        "summary": "获取当前登录用户信息",
+        "deprecated": false,
+        "description": "登录后才可访问，必须携带登录Token",
+        "tags": [
+          "用户管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultUserInfoResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"username\": \"\",\n    \"icon\": \"\",\n    \"menus\": \"\",\n    \"roles\": [\n      \"\"\n    ]\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-info-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/deleteList": {
+      "post": {
+        "summary": "批量删除角色",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -H 'Authorization:Bearer {{loginToken}}' -i http://localhost:8080/role/deleteList"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-deleteList-POST",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "query",
+            "description": "角色id的列表,[array of int64]",
+            "required": true,
+            "name": "ids"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/listAll": {
+      "get": {
+        "summary": "获取所有角色",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultListRole_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": [\n    {\n      \"id\": 0,\n      \"name\": \"\",\n      \"description\": \"\"\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-listAll-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/register": {
+      "post": {
+        "summary": "注册一个用户账号",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterParam_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"username\": \"\",\n  \"password\": \"\",\n  \"icon\": \"\",\n  \"email\": \"\",\n  \"nickname\": \"\",\n  \"notes\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultUser_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"username\": \"\",\n    \"password\": \"\"\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-register-POST",
+        "parameters": []
+      }
+    },
+    "/role/update/{id}": {
+      "post": {
+        "summary": "修改角色",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"name\": \"\",\n  \"description\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-update-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "角色id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/updatePassword": {
+      "post": {
+        "summary": "修改指定用户密码",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdatePasswordParam_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"username\": \"\",\n  \"oldPassword\": \"\",\n  \"newPassword\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-updatePassword-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/resource/{id}": {
+      "get": {
+        "summary": "根据ID获取资源详情",
+        "deprecated": false,
+        "tags": [
+          "资源管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultResource_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"name\": \"\",\n    \"url\": \"\"\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "resource-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "资源id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/create": {
+      "post": {
+        "summary": "添加角色",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"name\": \"\",\n  \"description\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-create-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/resource/listAll": {
+      "get": {
+        "summary": "查询所有后台资源",
+        "deprecated": false,
+        "tags": [
+          "资源管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultListResource_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": [\n    {\n      \"id\": 0,\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "resource-listAll-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "登录后返回Token",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginParam_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultUserLoginResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"token\": \"\",\n    \"tokenHead\": \"\"\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-login-POST",
+        "parameters": []
+      }
+    },
+    "/user/refreshToken": {
+      "post": {
+        "summary": "刷新token",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResultUserLoginResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -H 'Authorization:Bearer {{loginToken}}' -i http://localhost:8080/user/refreshToken"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultUserLoginResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"token\": \"\",\n    \"tokenHead\": \"\"\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-refreshToken-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/listRoles/{userId}": {
+      "get": {
+        "summary": "获取指定用户的角色",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultListRole_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": [\n    {\n      \"id\": 0,\n      \"name\": \"\",\n      \"description\": \"\"\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-listRoles-{userId}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "用户id",
+            "required": true,
+            "name": "userId"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/resource/list": {
+      "get": {
+        "summary": "分页模糊查询后台资源",
+        "deprecated": false,
+        "tags": [
+          "资源管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultCommonPageResource_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"pageNum\": 0,\n    \"pageSize\": 0,\n    \"totalPage\": 0,\n    \"total\": 0,\n    \"list\": [\n      {\n        \"id\": 0,\n        \"name\": \"\",\n        \"url\": \"\"\n      }\n    ]\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "resource-list-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "查询categoryId字段的关键词",
+            "required": false,
+            "name": "categoryId"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "查询name字段的关键词",
+            "required": false,
+            "name": "nameKeyword"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "查询url字段的关键词",
+            "required": false,
+            "name": "urlKeyword"
+          },
+          {
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "in": "query",
+            "description": "分页显示的总页数，缺省默认5",
+            "required": false,
+            "name": "pageSize"
+          },
+          {
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "in": "query",
+            "description": "分页显示的每页条目数，缺省默认1",
+            "required": false,
+            "name": "pageNum"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/delete/{id}": {
+      "post": {
+        "summary": "删除指定用户信息",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -H 'Authorization:Bearer {{loginToken}}' -i http://localhost:8080/user/delete/{id}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-delete-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "用户id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/list": {
+      "get": {
+        "summary": "根据角色名称分页获取角色列表",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultCommonPageRole_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"pageNum\": 0,\n    \"pageSize\": 0,\n    \"totalPage\": 0,\n    \"total\": 0,\n    \"list\": [\n      {\n        \"id\": 0,\n        \"name\": \"\",\n        \"description\": \"\"\n      }\n    ]\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-list-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "查询关键词",
+            "required": false,
+            "name": "keyword"
+          },
+          {
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "in": "query",
+            "description": "分页显示的总页数，缺省默认5",
+            "required": false,
+            "name": "pageSize"
+          },
+          {
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "in": "query",
+            "description": "分页显示的每页条目数，缺省默认1",
+            "required": false,
+            "name": "pageNum"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/delete/{id}": {
+      "post": {
+        "summary": "删除角色",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -H 'Authorization:Bearer {{loginToken}}' -i http://localhost:8080/role/delete/{id}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-delete-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "角色id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/update/{id}": {
+      "post": {
+        "summary": "修改指定用户信息",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-update-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "  用户id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "summary": "获取指定用户信息",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultUser_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"username\": \"\",\n    \"password\": \"\"\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "用户id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/resource/delete/{id}": {
+      "post": {
+        "summary": "根据ID删除后台资源",
+        "deprecated": false,
+        "tags": [
+          "资源管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -H 'Authorization:Bearer {{loginToken}}' -i http://localhost:8080/resource/delete/{id}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "resource-delete-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "资源id",
+            "required": true,
+            "name": "id"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/role/allocResources": {
+      "post": {
+        "summary": "给角色分配资源",
+        "deprecated": false,
+        "tags": [
+          "角色管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "&0"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "role-allocResources-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "query",
+            "description": "角色id",
+            "required": true,
+            "name": "roleId"
+          },
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "query",
+            "description": "资源id的列表,[array of int64]",
+            "required": true,
+            "name": "resourceIds"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/user/logout": {
+      "post": {
+        "summary": "登出功能",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -i http://localhost:8080/user/logout"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-logout-POST",
+        "parameters": []
+      }
+    },
+    "/user/allocRoles/{userId}": {
+      "post": {
+        "summary": "给用户分配角色",
+        "deprecated": false,
+        "tags": [
+          "用户管理Controller"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded;charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CommonResult_response"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -H 'Authorization:Bearer {{loginToken}}' -i http://localhost:8080/user/allocRoles/{userId}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResult_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 0,\n  \"message\": \"\",\n  \"data\": {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "user-allocRoles-{userId}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": " 用户id",
+            "required": true,
+            "name": "userId"
+          },
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "query",
+            "description": "给该用户分配的所有角色id,[array of int64]",
+            "required": true,
+            "name": "roleIds"
+          },
+          {
+            "schema": {
+              "format": "string",
+              "type": "string"
+            },
+            "in": "header",
+            "description": "作为登录凭据的Token",
+            "required": true,
+            "example": "Bearer {{loginToken}}",
+            "name": "Authorization"
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "springsecurity前后端分离项目的后端部分",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "资源管理Controller",
+      "description": "资源管理Controller"
+    },
+    {
+      "name": "角色管理Controller",
+      "description": "角色管理Controller"
+    },
+    {
+      "name": "权限管理Controller",
+      "description": "权限管理Controller"
+    },
+    {
+      "name": "用户管理Controller",
+      "description": "用户管理Controller"
+    }
+  ]
+}

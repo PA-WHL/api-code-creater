@@ -1,0 +1,31 @@
+{
+  "name": "api-code-gen",
+  "version": "1.0.0",
+  "description": "解析后端提供的api文档，自动为前端生成相应的api调用函数代码",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node ./test/api.config.js"
+  },
+  "keywords": [],
+  "author": "pa-whl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PA-WHL/api-code-gen.git"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mustache": "^4.2.5",
+    "@types/node": "^20.10.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "mustache": "^4.2.0",
+    "openapi3-ts": "^4.1.2"
+  }
+}

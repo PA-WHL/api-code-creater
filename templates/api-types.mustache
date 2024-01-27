@@ -1,0 +1,38 @@
+{{! ================== 模块类型模式下的模板 ================== }}
+{{#typeScope.enableModule}}
+{{#typeDataList}}
+export type {{&typeName}} = {
+{{#props}}
+    /** {{description}} */
+    {{name}}{{^required}}?{{/required}}: {{type}};
+{{/props}}
+}
+
+{{/typeDataList}}
+{{/typeScope.enableModule}}
+{{! ================== 命名空间类型模式下的模板 ================== }}
+{{#typeScope.enableNamespace}}
+declare namespace {{namespaceId}} {
+{{#typeDataList}}
+    type {{&typeName}} = {
+    {{#props}}
+        /** {{description}} */
+        {{name}}{{^required}}?{{/required}}: {{type}};
+    {{/props}}
+    }
+
+{{/typeDataList}}
+}
+{{/typeScope.enableNamespace}}
+{{! ================== 全局类型模式下的模板 ================== }}
+{{#typeScope.enableGlobal}}
+{{#typeDataList}}
+declare type {{&typeName}} = {
+{{#props}}
+  /** {{description}} */
+  {{name}}{{^required}}?{{/required}}: {{type}};
+{{/props}}
+}
+
+{{/typeDataList}}
+{{/typeScope.enableGlobal}}

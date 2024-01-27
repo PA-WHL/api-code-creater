@@ -1,0 +1,28 @@
+{
+//  "include": ["src/**/*"],
+//  "exclude": ["dist/api/*.ts"],
+//  "compilerOptions": {
+//    "rootDir": "src",
+//    "outDir": "dist",
+//    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+//    "module": "commonjs",                                /* Specify what module code is generated. */
+//    "resolveJsonModule": true,                           /* Enable importing .json files. */
+//    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+//    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+//    "strict": true,                                      /* Enable all strict type-checking options. */
+//    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "ES2015",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "declaration": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "lib", "es", "dist", "**/__tests__", "**/__test__", "**/demo"]
+}
