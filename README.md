@@ -150,8 +150,8 @@ generateService({
 
 | 规则参数         | 描述                | 类型                                                        | 注意                                                                                                                                                            |
 |--------------|-------------------|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| target       | 针对函数名或类型名的匹配目标字符串 | string \| RegExp                                          | `funNameFixRules参数`时以函数名为查找目标，`typeNameFixRules参数`时以类型名为查找目标<li>若为string字符串时，执行完全匹配，指所有完全与该值相同的函数名或类型名所在的字符串对象<li>若为RegExp对象时，执行正则匹配，仅指符合该值匹配规则的函数名或类型名中的匹配部分 |
-| replaceValue | 针对匹配目标字符串的替换值     | (groupName?:string)=>string \| (typeName?:string)=>string | `funNameFixRules参数`时,提供默认groupName参数代表目标函数所在的组名（注：同一url首路径划分为一组）<br/>`typeNameFixRules参数`时, 提供默认typeName参数代表目标类型所在的字符串名                                       |
+| target       | 针对函数名或类型名的匹配目标字符串 | string \| RegExp                                          | <li>`funNameFixRules参数`时以函数名为查找目标，`typeNameFixRules参数`时以类型名为查找目标<li>若为string字符串时，执行完全匹配，指所有完全与该值相同的函数名或类型名所在的字符串对象<li>若为RegExp对象时，执行正则匹配，仅指符合该值匹配规则的函数名或类型名中的匹配部分 |
+| replaceValue | 针对匹配目标字符串的替换值     | (groupName?:string)=>string \| (typeName?:string)=>string | <li>`funNameFixRules参数`时,提供默认groupName参数代表目标函数所在的组名（注：同一url首路径划分为一组）<li>`typeNameFixRules参数`时, 提供默认typeName参数代表目标类型所在的字符串名                                       |
 
 
 
