@@ -1,4 +1,4 @@
-# api-code-gen
+# api-code-creater
 
 ## 介绍
 解析后端提供的api文档，自动为前端生成相应的请求调用函数代码。
@@ -14,11 +14,11 @@
 ## 基础用法
 步骤1：安装生成器
 ```
-npm i api-code-gen -save-dev
+npm i api-code-creater -save-dev
 ```
 步骤2：在项目根目录新建 `api.config.js`, 用以配置生成器的执行函数
 ```js
-const {generateService} = require('api-code-gen')
+const {generateService} = require('api-code-creater')
 const path = require("path");
 
 generateService({
@@ -221,7 +221,7 @@ generateService({
 api.config.js配置：
 
 ```js
-const {generateService, NameConversionTool} = require('api-code-gen');
+const {generateService, NameConversionTool} = require('api-code-creater');
 const path = require("path");
 const {toCapitalize} = NameConversionTool;
 
