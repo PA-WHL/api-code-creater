@@ -25,13 +25,24 @@ export type GeneratorConfig = {
     templatesFolder?: string,
 
     //======================== 代码生成样式 ========================
+
+    /**
+     * 生成模式
+     *
+     * <ul>
+     * <li>'ts': 缺省默认的ts模式，会生成ts格式的 函数声明文件 与 类型声明文件
+     * <li>'js': js模式，仅生成js格式的函数声明文件，此模式下后续一些关于类型的配置项会失效！
+     * </ul>
+     */
+    genMode?: 'ts' | 'js',
+
     /**
      * 公共函数文件头
      * <li>缺省默认所有函数声明文件的头部存在语句`import request from '@/utils/request';`
      * <li>可自定义一条或多条语句替换默认语句
      * <li>设置多条语句时，按填写顺序在函数声明文件头部进行排序
      */
-    funFileHeads: string[],
+    funFileHeads?: string[],
     /**
      * 函数参数模式
      * <li>undefined | 'default': 默认模式，函数的参数会呈现所有
@@ -66,6 +77,22 @@ export type GeneratorConfig = {
      * <li>缺省默认命名空间名为 ‘API’
      */
     namespaceId?: string,
+
+    /**
+     * 函数中被 允许显示（生成）的 Content-Type 请求头代码
+     * <br><br>
+     * 其存在如下一些可填值：
+     * <ul>
+     * <li>'application/json'
+     * <li>'application/x-www-form-urlencoded'
+     * <li>'multipart/form-data'
+     * </ul>
+     *
+     * 注：缺省未明确设置的情况下，默认仅不允许显示 'application/json'，其他Content-Type都允许显示，即等同于 ['application/x-www-form-urlencoded', 'multipart/form-data']
+     *
+     * 注：函数中实际是否显示Content-Type 请求头代码，还要看是否请求携带body数据，无则不管怎样都不显示
+     */
+    showContentTypes?: ('application/json' |'application/x-www-form-urlencoded' | 'multipart/form-data')[]
 
     //======================== 名称修正处理 ========================
 
@@ -130,10 +157,12 @@ export type GeneratorConfig = {
  */
 export function generateService(config: GeneratorConfig) {
     const openAPIData = require(config.inputFilePath);
-    // const serviceGenerator = new ServiceGenerator(config, openAPIData);
-    // serviceGenerator.out();
+    // 一些配置项的缺省默认值
     if (!config.templatesFolder) {
         config.templatesFolder = path.join(__dirname, '../templates');
+    }
+    if (!config.genMode) {
+        config.genMode = 'ts';
     }
     if (!config.funFileHeads) {
         config.funFileHeads = ["import request from '@/utils/request';"];
@@ -141,6 +170,10 @@ export function generateService(config: GeneratorConfig) {
     if (!config.namespaceId) {
         config.namespaceId = "API";
     }
+    if (!config.showContentTypes) {
+        config.showContentTypes = ['application/x-www-form-urlencoded', 'multipart/form-data']
+    }
+    // 解析后端提供的api文档
     let apiDocData: ApiDocData;
     try {
         apiDocData = new OpenapiParser(openAPIData).getApiDocData();
@@ -151,6 +184,7 @@ export function generateService(config: GeneratorConfig) {
     if (apiDocData && apiDocData.groupApiDataList && apiDocData.groupApiDataList.length > 0) {
         console.log("✅ 针对位于%s的api文档，解析成功！", config.inputFilePath);
     }
+    // 生成函数声明文件
     let outFunFileNames: string[];
     try {
         outFunFileNames = new FunFileGenerator(config, apiDocData).out();
@@ -161,16 +195,21 @@ export function generateService(config: GeneratorConfig) {
     if (outFunFileNames && outFunFileNames.length > 0) {
         console.log("✅ 在%s目录下，成功生成函数声明文件：%s", config.outputDirPath, outFunFileNames);
     }
-    let outTypeFileNames: string[];
-    try {
-        outTypeFileNames = new TypeFileGenerator(config, apiDocData).out();
-    } catch (e) {
-        console.log("❌ 生成类型声明文件失败！");
-        console.log(e);
+    // 生成类型声明文件
+    if (config.genMode === 'ts') {
+        let outTypeFileNames: string[];
+        try {
+            outTypeFileNames = new TypeFileGenerator(config, apiDocData).out();
+        } catch (e) {
+            console.log("❌ 生成类型声明文件失败！");
+            console.log(e);
+        }
+        if (outTypeFileNames && outTypeFileNames.length > 0) {
+            console.log("✅ 在%s目录下，成功生成类型声明文件：%s", config.outputDirPath, outTypeFileNames);
+        }
     }
-    if (outTypeFileNames && outTypeFileNames.length > 0) {
-        console.log("✅ 在%s目录下，成功生成类型声明文件：%s", config.outputDirPath, outTypeFileNames);
-    }
+
+
 }
 
 

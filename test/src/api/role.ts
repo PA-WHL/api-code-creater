@@ -7,6 +7,7 @@ import type {
     CommonPage,
     RoleAllocResourcesParam
 } from './typings';
+// @ts-ignore
 import request from '@/utils/request';
 
 /**
@@ -25,7 +26,7 @@ export function addRole(data:Role):Promise<CommonResult> {
 * 获取角色相关资源
 * @param roleId 角色id
 */
-export function listResources(roleId:number):Promise<CommonResult<Resource>> {
+export function listResources(roleId:number):Promise<CommonResult<Resource[]>> {
     return request({
         url: `/role/listResources/${roleId}`,
         method: 'get'
@@ -36,7 +37,7 @@ export function listResources(roleId:number):Promise<CommonResult<Resource>> {
 * 根据角色名称分页获取角色列表
 * @param params RoleListParam
 */
-export function listRoles(params:RoleListParam):Promise<CommonResult<CommonPage<Role>>> {
+export function listRoles(params:RoleListParam):Promise<CommonResult<CommonPage<Role[]>>> {
     return request({
         url: `/role/list`,
         method: 'get',
@@ -47,7 +48,7 @@ export function listRoles(params:RoleListParam):Promise<CommonResult<CommonPage<
 /**
 * 获取所有角色
 */
-export function listAllRoles():Promise<CommonResult<Role>> {
+export function listAllRoles():Promise<CommonResult<Role[]>> {
     return request({
         url: `/role/listAll`,
         method: 'get'
@@ -86,6 +87,9 @@ export function deleteRoleList(data:RoleDeleteListParam):Promise<CommonResult> {
     return request({
         url: `/role/deleteList`,
         method: 'post',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
         data: data
     })
 }
@@ -98,6 +102,9 @@ export function allocResources(data:RoleAllocResourcesParam):Promise<CommonResul
     return request({
         url: `/role/allocResources`,
         method: 'post',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
         data: data
     })
 }

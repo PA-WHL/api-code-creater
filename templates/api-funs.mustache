@@ -1,3 +1,5 @@
+{{! >>>>>>>>>>>>>>>>>> ts格式的生成模式下的模板 <<<<<<<<<<<<<<<<<< }}
+{{#isTsGenMode}}
 {{! ================== 模块类型模式下的模板 ================== }}
 {{#typeScope.enableModule}}
 {{#funImportTypeList.length}}import type {
@@ -23,6 +25,11 @@ export function {{functionName}}({{#functionParamList}}{{name}}:{{&type}},{{/fun
         {{#queryParams.length}}
         params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
         {{/queryParams.length}}
+        {{#isShowContentType}}
+        headers: {
+            'Content-Type': '{{&contentType}}'
+        },
+        {{/isShowContentType}}
         {{#bodyData.length}}
         data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
         {{/bodyData.length}}
@@ -51,6 +58,11 @@ export function {{functionName}}({{#functionParamList}}{{name}}:{{^isRefType}}{{
         {{#queryParams.length}}
         params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
         {{/queryParams.length}}
+        {{#isShowContentType}}
+        headers: {
+            'Content-Type': '{{&contentType}}'
+        },
+        {{/isShowContentType}}
         {{#bodyData.length}}
         data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
         {{/bodyData.length}}
@@ -79,6 +91,11 @@ export function {{functionName}}({{#functionParamList}}{{name}}:{{&type}},{{/fun
         {{#queryParams.length}}
         params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
         {{/queryParams.length}}
+        {{#isShowContentType}}
+        headers: {
+            'Content-Type': '{{&contentType}}'
+        },
+        {{/isShowContentType}}
         {{#bodyData.length}}
         data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
         {{/bodyData.length}}
@@ -87,3 +104,31 @@ export function {{functionName}}({{#functionParamList}}{{name}}:{{&type}},{{/fun
 
 {{/funDataList}}
 {{/typeScope.enableGlobal}}
+{{/isTsGenMode}}
+{{! >>>>>>>>>>>>>>>>>> js格式的生成模式下的模板 <<<<<<<<<<<<<<<<<< }}
+{{^isTsGenMode}}
+{{#funFileHeads}}
+{{&.}}
+{{/funFileHeads}}
+
+{{#funDataList}}
+export function {{functionName}}({{#functionParamList}}{{name}},{{/functionParamList}}) {
+    return request({
+        url: `{{& url }}`,
+        method: '{{ method }}',
+        {{#queryParams.length}}
+            params: {{#isParamSimple}}params{{/isParamSimple}}{{^isParamSimple}}{ {{#queryParams}}{{name}},{{/queryParams}} }{{/isParamSimple}},
+        {{/queryParams.length}}
+        {{#isShowContentType}}
+        headers: {
+            'Content-Type': '{{&contentType}}'
+        },
+        {{/isShowContentType}}
+        {{#bodyData.length}}
+        data: {{#isParamSimple}}data{{/isParamSimple}}{{^isParamSimple}}{ {{#bodyData}}{{name}},{{/bodyData}} }{{/isParamSimple}},
+        {{/bodyData.length}}
+    })
+}
+
+{{/funDataList}}
+{{/isTsGenMode}}

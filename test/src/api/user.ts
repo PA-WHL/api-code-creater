@@ -11,6 +11,7 @@ import type {
     Role,
     UserAllocRolesParam
 } from './typings';
+// @ts-ignore
 import request from '@/utils/request';
 
 /**
@@ -28,7 +29,7 @@ export function getUser(id:number):Promise<CommonResult<User>> {
 * 根据用户名或姓名分页获取用户列表
 * @param params UserListParam
 */
-export function listUsers(params:UserListParam):Promise<CommonResult<CommonPage<User>>> {
+export function listUsers(params:UserListParam):Promise<CommonResult<CommonPage<User[]>>> {
     return request({
         url: `/user/list`,
         method: 'get',
@@ -40,7 +41,7 @@ export function listUsers(params:UserListParam):Promise<CommonResult<CommonPage<
 * 获取指定用户的角色
 * @param userId 用户id
 */
-export function listRoles(userId:number):Promise<CommonResult<Role>> {
+export function listRoles(userId:number):Promise<CommonResult<Role[]>> {
     return request({
         url: `/user/listRoles/${userId}`,
         method: 'get'
@@ -92,6 +93,9 @@ export function allocRoles(userId:number,data:UserAllocRolesParam):Promise<Commo
     return request({
         url: `/user/allocRoles/${userId}`,
         method: 'post',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
         data: data
     })
 }

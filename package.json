@@ -1,21 +1,22 @@
 {
-  "name": "api-code-gen",
-  "version": "1.0.0",
+  "name": "api-code-creater",
+  "version": "1.1.0",
   "description": "解析后端提供的api文档，自动为前端生成相应的api调用函数代码",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "npm run build && node ./test/api.config.js"
   },
-  "keywords": [],
+  "keywords": ["ts","js", "api", "code","codegen", "OpenApi", "api代码生成器"],
   "author": "pa-whl",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PA-WHL/api-code-gen.git"
+    "url": "https://github.com/PA-WHL/api-code-creater.git"
   },
   "files": [
     "dist",
-    "templates"
+    "templates",
+    "*.png"
   ],
   "license": "ISC",
   "devDependencies": {

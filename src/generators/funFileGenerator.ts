@@ -18,9 +18,14 @@ export type FunFileData = {
      */
     templateData: {
         /**
+         * 是否处于ts格式的生成模式
+         */
+        isTsGenMode?: boolean,
+
+        /**
          * 公共函数文件头
          */
-        funFileHeads?: string[]
+        funFileHeads?: string[],
         /**
          * api函数数据列表
          */
@@ -92,6 +97,15 @@ export type FunData = {
      * 函数对应请求的body参数
      */
     bodyData?: FunParam[],
+
+    /**
+     * 函数对应请求的Content-Type值
+     */
+    contentType?: string,
+    /**
+     * 函数是否被允许显示Content-Type相关代码
+     */
+    isShowContentType?: boolean
 }
 
 export type FunParam = {
@@ -168,6 +182,7 @@ export class FunFileGenerator {
                 fileName: "",
                 templateName: "",
                 templateData: {
+                    isTsGenMode: this.config.genMode === 'ts',
                     funFileHeads: this.config.funFileHeads,
                     funDataList: [],
                     funImportTypeList: [],
@@ -177,7 +192,8 @@ export class FunFileGenerator {
                 }
             };
 
-            funFileData.fileName = `${groupApiData.groupName}.ts`;
+            // funFileData.fileName = `${groupApiData.groupName}.ts`;
+            funFileData.fileName = this.config.genMode === 'ts' ? `${groupApiData.groupName}.ts` : `${groupApiData.groupName}.js`;
             funFileData.templateName = "api-funs";
             groupApiData.pathApiDataList.forEach(pathApiData => {
                 let functionName = this.getFunctionName(pathApiData);
@@ -190,6 +206,8 @@ export class FunFileGenerator {
                 const pathVariables = this.getPathVariables(pathApiData);
                 const queryParams = this.getQueryParams(pathApiData);
                 const bodyData = this.getBodyData(pathApiData);
+                const contentType = this.getContentType(pathApiData);
+                const isShowContentType = this.getIsShowContentType(contentType, bodyData);
 
                 // 按配置提供的修正规则，完成指定函数名的修正
                 functionName = this.fixFunctionName(groupApiData, functionName);
@@ -200,7 +218,8 @@ export class FunFileGenerator {
 
                 funFileData.templateData.funDataList.push({
                     functionName, functionDescription, functionParamList, functionReturnType,
-                    url, method, pathVariables, queryParams, bodyData
+                    url, method, pathVariables, queryParams, bodyData,
+                    contentType, isShowContentType
                 });
             })
             funFileData.templateData.funImportTypeList = this.getFunImportTypeList(funFileData);
@@ -327,7 +346,7 @@ export class FunFileGenerator {
                 })
             } else {
                 // 简洁参数模式下，查询参数组成一个函数参数
-                const name = funParamList.find(fp =>fp.name==='data') ? "data2" : "data";
+                const name = funParamList.find(fp => fp.name === 'data') ? "data2" : "data";
                 // 不存在映射, 查询参数封装成一个映射类型
                 const queryParams = pathApiData.requestData.queryParams;
                 if (queryParams && queryParams.length > 0) {
@@ -338,13 +357,31 @@ export class FunFileGenerator {
         }
 
         // 若同时存在 body数据 与 查询参数
-        if (funParamList.length > 1 && funParamList.find(fd=>fd.name==="obj"|| fd.name==="data")) {
+        if (funParamList.length > 1 && funParamList.find(fd => fd.name === "obj" || fd.name === "data")) {
             // 这里直接报错，建议重新规范接口参数
             throw new Error(pathApiData.path + "接口请求同时存在body数据 与 查询参数！建议联系后端修改！")
         }
 
 
         return funParamList.length > 0 ? funParamList : undefined;
+    }
+
+    private getContentType(pathApiData: PathApiData) {
+        return pathApiData.requestData.bodyData.contentType
+    }
+
+    private getIsShowContentType(contentType: string, bodyData: FunParam[]) {
+        let isShowContentType: boolean = false;
+
+        if (contentType && bodyData && bodyData.length > 0) {
+            for (let showContentType of this.config.showContentTypes) {
+                if (contentType.includes(showContentType)) {
+                    isShowContentType = true
+                }
+            }
+        }
+
+        return isShowContentType
     }
 
     private getFunImportTypeList(funFileData: FunFileData) {
@@ -375,7 +412,10 @@ export class FunFileGenerator {
                     if (functionReturnType.includes(commonType)) {
                         allTypes.push(commonType);
                         if (remainingPart.includes(commonType + '<') && remainingPart.endsWith('>')) {
+                            // 解析获得泛型变量： commonType<Xxx> => Xxx
                             remainingPart = remainingPart.substring(0, remainingPart.length - 1).replace(commonType + "<", '');
+                            // 注：解析获得的泛型变量可能是数组, 需处理得到泛型变量真实对应的类型：Xxx[] => Xxx
+                            remainingPart = remainingPart.replace("[]", "")
                         }
                     }
                 })

@@ -4,6 +4,7 @@ import type {
     ResourceListParam,
     CommonPage
 } from './typings';
+// @ts-ignore
 import request from '@/utils/request';
 
 /**
@@ -33,7 +34,7 @@ export function getResource(id:number):Promise<CommonResult<Resource>> {
 * 分页模糊查询后台资源
 * @param params ResourceListParam
 */
-export function listResources(params:ResourceListParam):Promise<CommonResult<CommonPage<Resource>>> {
+export function listResources(params:ResourceListParam):Promise<CommonResult<CommonPage<Resource[]>>> {
     return request({
         url: `/resource/list`,
         method: 'get',
@@ -44,7 +45,7 @@ export function listResources(params:ResourceListParam):Promise<CommonResult<Com
 /**
 * 查询所有后台资源
 */
-export function listAllResources():Promise<CommonResult<Resource>> {
+export function listAllResources():Promise<CommonResult<Resource[]>> {
     return request({
         url: `/resource/listAll`,
         method: 'get'
